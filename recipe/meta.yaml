@@ -1,5 +1,5 @@
 {% set name = "tox-uv" %}
-{% set version = "1.15.0" %}
+{% set version = "1.16.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/tox_uv-{{ version }}.tar.gz
-  sha256: a5f08c80a3eabc47881e378700e5044b67ba94b03181ae38246627127f6a9183
+  sha256: 71b2e2fa6c35c1360b91a302df1d65b3e5a1f656b321c5ebf7b84545804c9f01
 
 build:
   noarch: python
-  script: 
+  script:
     - sed -i '/"uv/d' ./pyproject.toml && {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [linux]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [win or osx]
   number: 0
