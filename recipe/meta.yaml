@@ -18,12 +18,12 @@ build:
 
 requirements:
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - hatch-vcs >=0.4
     - hatchling >=1.25
     - pip
   run:
-    - python >=3.9
+    - python >={{ python_min }}
     - packaging >=24.1
     - tox <5,>=4.21.2
     - typing_extensions >=4.12.2
@@ -36,6 +36,7 @@ test:
   # pip check fails because uv is part of base env, remove uv from pyproject.toml and enable pip check for linux only
     - pip check  # [linux]
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
