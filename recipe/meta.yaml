@@ -14,7 +14,7 @@ build:
   script:
     - sed -i '/"uv/d' ./pyproject.toml && {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [linux]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [win or osx]
-  number: 0
+  number: 1
 
 requirements:
   host:
