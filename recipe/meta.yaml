@@ -27,7 +27,7 @@ requirements:
     - packaging >=24.1
     - tox <5,>=4.21.2
     - typing_extensions >=4.12.2
-    - uv <1,>=0.4.18
+    - python-uv <1,>=0.4.18
 
 test:
   imports:
