@@ -1,5 +1,5 @@
 {% set name = "tox-uv" %}
-{% set version = "1.26.1" %}
+{% set version = "1.26.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/tox_uv-{{ version }}.tar.gz
-  sha256: 241cc530b4a80436c4487977c8303d9aace398c6561d5e7d8845606fa7d482ab
+  sha256: 5270d5d49e26c1303d902b90d6143a593b43ae148ccc5107251b79bf5bd4fefd
 
 build:
   noarch: python
