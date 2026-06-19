@@ -1,40 +1,38 @@
-{% set name = "tox-uv" %}
-{% set version = "1.29.0" %}
+{% set version = "1.35.2" %}
 
 package:
-  name: {{ name|lower }}
+  name: tox-uv
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/tox_uv-{{ version }}.tar.gz
-  sha256: 30fa9e6ad507df49d3c6a2f88894256bcf90f18e240a00764da6ecab1db24895
+  # tox-uv-bare provides the actual package code
+  url: https://files.pythonhosted.org/packages/source/t/tox-uv-bare/tox_uv_bare-{{ version }}.tar.gz
+  sha256: 49e28a804c97f23ea17e25859960c0fa78f35bccb7e14344cfd840e89a9aade9
 
 build:
   noarch: python
   script:
-    - sed -i '/"uv/d' ./pyproject.toml && {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [linux]
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [win or osx]
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
     - python {{ python_min }}
-    - hatch-vcs >=0.4
-    - hatchling >=1.25
+    - hatch-vcs >=0.5
+    - hatchling >=1.28
     - pip
   run:
     - python >={{ python_min }}
-    - packaging >=24.1
-    - tox <5,>=4.21.2
-    - typing_extensions >=4.12.2
-    - python-uv <1,>=0.4.18
+    - packaging >=26
+    - tox <5,>=4.52.1
+    - typing_extensions >=4.15
+    - uv
 
 test:
   imports:
     - tox_uv
   commands:
-  # pip check fails because uv is part of base env, remove uv from pyproject.toml and enable pip check for linux only
-    - pip check  # [linux]
+    - pip check
   requires:
     - python {{ python_min }}
     - pip
