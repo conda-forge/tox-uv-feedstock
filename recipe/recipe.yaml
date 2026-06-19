@@ -1,0 +1,50 @@
+schema_version: 1
+
+context:
+  version: "1.35.2"
+
+package:
+  name: tox-uv
+  version: ${{ version }}
+
+source:
+  # tox-uv-bare provides the actual package code
+  url: https://files.pythonhosted.org/packages/source/t/tox-uv-bare/tox_uv_bare-${{ version }}.tar.gz
+  sha256: 49e28a804c97f23ea17e25859960c0fa78f35bccb7e14344cfd840e89a9aade9
+
+build:
+  number: 0
+  noarch: python
+  script:
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - hatch-vcs >=0.5
+    - hatchling >=1.28
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - packaging >=26
+    - tox <5,>=4.52.1
+    - typing_extensions >=4.15
+    - uv
+
+tests:
+  - python:
+      imports:
+        - tox_uv
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Integration of uv with tox.
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/tox-dev/tox-uv
+  repository: https://github.com/tox-dev/tox-uv
+
+extra:
+  recipe-maintainers:
+    - rxm7706
