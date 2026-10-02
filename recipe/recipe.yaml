@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "1.36.0"
+  version: "1.36.1"
 
 package:
   name: tox-uv
@@ -10,7 +10,7 @@ package:
 source:
   # tox-uv-bare provides the actual package code
   url: https://files.pythonhosted.org/packages/source/t/tox-uv-bare/tox_uv_bare-${{ version }}.tar.gz
-  sha256: d9b0a2fd0f74fa65d9597108f8a0ef7abb08651c9196a998a6073b781b45cfd0
+  sha256: 33a08e4205c63811dd76590590718539fe87dcadda5882f164f747bd5db31a2c
 
 build:
   number: 0
